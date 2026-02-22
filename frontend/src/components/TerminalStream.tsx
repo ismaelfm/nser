@@ -19,12 +19,12 @@ export default function TerminalStream({ lines, isRunning, resultSummary }: Term
         <div className="flex-1 bg-[#05080f] border border-gray-800 rounded-lg m-6 flex flex-col overflow-hidden shadow-inner">
             <div className="bg-[#0a0f18] px-4 py-2 border-b border-gray-800 flex justify-between items-center text-xs font-mono text-gray-500">
                 <span>TERMINAL OUTPUT</span>
-                {isRunning && <span className="flex items-center gap-2 text-blue-400">
+                {isRunning && <span className="flex items-center gap-2 text-white">
                     <span className="relative flex h-2 w-2">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-none bg-white opacity-75"></span>
+                        <span className="relative inline-flex rounded-none h-2 w-2 bg-white"></span>
                     </span>
-                    Live
+                    LIVE
                 </span>}
             </div>
 
@@ -41,7 +41,7 @@ export default function TerminalStream({ lines, isRunning, resultSummary }: Term
                 {lines.map((line, idx) => {
                     const isError = line.toLowerCase().includes("error") || line.toLowerCase().includes("fail");
                     return (
-                        <div key={idx} className={isError ? "text-red-400" : "text-green-300/90"}>
+                        <div key={idx} className={isError ? "text-white font-bold bg-black inline-block px-1" : "text-gray-400"}>
                             {line}
                         </div>
                     );
@@ -49,9 +49,9 @@ export default function TerminalStream({ lines, isRunning, resultSummary }: Term
 
                 {resultSummary && (
                     <div className="mt-4 pt-4 border-t border-gray-800/50 flex items-center gap-4">
-                        <span className={`px-2 py-1 rounded text-xs font-bold ${resultSummary.exitCode === 0 ? "bg-emerald-500/20 text-emerald-400" : "bg-red-500/20 text-red-400"
+                        <span className={`px-2 py-1 rounded-none border-2 text-xs font-bold uppercase tracking-widest ${resultSummary.exitCode === 0 ? "bg-white text-black border-white" : "bg-black text-white border-white"
                             }`}>
-                            Exit {resultSummary.exitCode}
+                            [EXIT {resultSummary.exitCode}]
                         </span>
                         {resultSummary.duration && (
                             <span className="text-gray-500">{resultSummary.duration}</span>

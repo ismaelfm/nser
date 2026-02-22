@@ -8,8 +8,8 @@ interface ToolExamplesGridProps {
 export default function ToolExamplesGrid({ examples }: ToolExamplesGridProps) {
     if (!examples || examples.length === 0) {
         return (
-            <div className="p-8 text-center bg-gray-800/20 rounded-xl border border-gray-800/50">
-                <p className="text-gray-500 italic">No examples available for this tool yet.</p>
+            <div className="p-8 text-center bg-black border-2 border-dashed border-gray-800 font-mono uppercase tracking-widest text-xs">
+                <p className="text-gray-600">NO_EXAMPLES_FOUND</p>
             </div>
         );
     }

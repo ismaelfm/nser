@@ -38,72 +38,70 @@ export default function NewWorkspaceModal({ isOpen, onClose, onCreated }: Props)
     };
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm px-4">
-            <div className="bg-[#0a0f18] border border-gray-800 rounded-2xl w-full max-w-md shadow-2xl overflow-hidden">
-                <div className="p-6 border-b border-gray-800/80 flex justify-between items-center bg-gray-900/40">
-                    <h3 className="text-xl font-bold text-gray-100">New Workspace</h3>
-                    <button onClick={onClose} className="text-gray-500 hover:text-gray-300 transition-colors">
-                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                        </svg>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm px-4 font-mono">
+            <div className="bg-black border-2 border-white rounded-none w-full max-w-md shadow-[0_0_30px_rgba(255,255,255,0.1)] overflow-hidden">
+                <div className="p-6 border-b border-white flex justify-between items-center bg-black">
+                    <h3 className="text-xl font-bold text-white uppercase tracking-[0.2em]">[ NEW_TARGET ]</h3>
+                    <button onClick={onClose} className="text-gray-500 hover:text-white transition-colors">
+                        [X]
                     </button>
                 </div>
 
                 <form onSubmit={handleSubmit} className="p-6 space-y-5">
                     {error && (
-                        <div className="bg-red-900/20 border border-red-900/50 text-red-400 p-3 rounded-lg text-sm">
-                            {error}
+                        <div className="bg-black border-2 border-white text-white p-3 font-bold uppercase tracking-widest text-xs">
+                            [ERROR] {error}
                         </div>
                     )}
 
                     <div className="space-y-1.5">
-                        <label className="block text-sm font-medium text-gray-300">Workspace Name *</label>
+                        <label className="block text-sm font-bold text-white uppercase tracking-widest">Target Name *</label>
                         <input
                             type="text"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
-                            className="w-full bg-[#05080f] border border-gray-800 text-gray-100 rounded-lg px-4 py-2.5 focus:outline-none focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/50 transition-all placeholder:text-gray-600"
-                            placeholder="e.g. Acme Corp External"
+                            className="w-full bg-black border-2 border-gray-800 text-white rounded-none px-4 py-2.5 outline-none focus:border-white transition-colors placeholder:text-gray-800 uppercase"
+                            placeholder="CORP.INTERNAL"
                             autoFocus
                         />
                     </div>
 
                     <div className="space-y-1.5">
-                        <label className="block text-sm font-medium text-gray-300">Default Target</label>
+                        <label className="block text-sm font-bold text-white uppercase tracking-widest">Base IP/Domain</label>
                         <input
                             type="text"
                             value={target}
                             onChange={(e) => setTarget(e.target.value)}
-                            className="w-full bg-[#05080f] border border-gray-800 text-gray-100 rounded-lg px-4 py-2.5 focus:outline-none focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/50 transition-all placeholder:text-gray-600 font-mono text-sm"
-                            placeholder="e.g. 192.168.1.0/24 or example.com"
+                            className="w-full bg-black border-2 border-gray-800 text-white rounded-none px-4 py-2.5 outline-none focus:border-white transition-colors placeholder:text-gray-800 uppercase"
+                            placeholder="192.168.1.0/24"
                         />
-                        <p className="text-xs text-gray-500">Pre-fills the target input when running tools.</p>
+                        <p className="text-xs text-gray-600 uppercase tracking-widest mt-2">{"> DEFAULT_TARGET_FOR_TOOLS"}</p>
                     </div>
 
                     <div className="space-y-1.5">
-                        <label className="block text-sm font-medium text-gray-300">Description</label>
+                        <label className="block text-sm font-bold text-white uppercase tracking-widest">Notes</label>
                         <textarea
                             value={desc}
                             onChange={(e) => setDesc(e.target.value)}
-                            className="w-full bg-[#05080f] border border-gray-800 text-gray-100 rounded-lg px-4 py-2.5 focus:outline-none focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/50 transition-all placeholder:text-gray-600 min-h-[80px] resize-none"
-                            placeholder="Optional context..."
+                            className="w-full bg-black border-2 border-gray-800 text-white rounded-none px-4 py-2.5 outline-none focus:border-white transition-colors placeholder:text-gray-800 min-h-[80px] resize-none"
+                            placeholder="MISSION_BRIEF..."
                         />
                     </div>
 
-                    <div className="pt-2 flex justify-end gap-3">
+                    <div className="pt-4 flex justify-end gap-4 border-t border-gray-800">
                         <button
                             type="button"
                             onClick={onClose}
-                            className="px-4 py-2 text-sm font-medium text-gray-400 hover:text-gray-200 transition-colors"
+                            className="px-6 py-2 text-xs font-bold text-gray-500 hover:text-white border-2 border-transparent hover:border-gray-500 transition-colors uppercase tracking-widest"
                         >
-                            Cancel
+                            ABORT
                         </button>
                         <button
                             type="submit"
                             disabled={loading || !name.trim()}
-                            className="bg-blue-600 hover:bg-blue-500 disabled:bg-blue-600/50 disabled:cursor-not-allowed text-white px-5 py-2 rounded-lg text-sm font-semibold shadow-lg shadow-blue-500/20 transition-all"
+                            className="bg-white hover:bg-gray-300 disabled:bg-gray-800 disabled:text-gray-500 disabled:cursor-not-allowed text-black px-6 py-2 rounded-none text-xs font-bold uppercase tracking-[0.2em] transition-colors border-2 border-transparent disabled:border-gray-800"
                         >
-                            {loading ? "Creating..." : "Create Workspace"}
+                            {loading ? "INITIALIZING..." : "INITIALIZE"}
                         </button>
                     </div>
                 </form>

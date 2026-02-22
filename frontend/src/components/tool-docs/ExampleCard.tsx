@@ -16,24 +16,24 @@ export default function ExampleCard({ example }: ExampleCardProps) {
     };
 
     return (
-        <div className="bg-gray-800/40 p-5 rounded-xl border border-gray-700/50 hover:border-gray-600/50 transition-colors flex flex-col h-full">
-            <h4 className="font-semibold text-gray-200 mb-1">{example.title}</h4>
+        <div className="bg-black p-5 border-2 border-gray-800 hover:border-white transition-colors flex flex-col h-full font-mono">
+            <h4 className="font-bold text-white mb-2 uppercase tracking-widest">{example.title}</h4>
             {example.description && (
-                <p className="text-gray-400 text-sm mb-4 flex-1">
+                <p className="text-gray-500 text-xs mb-4 flex-1 uppercase tracking-widest border-l-2 border-gray-800 pl-3">
                     {example.description}
                 </p>
             )}
 
             <div className="relative group mt-auto">
-                <div className="bg-gray-950 font-mono text-sm p-3 rounded-lg text-emerald-400 border border-gray-800/80 overflow-x-auto whitespace-pre">
+                <div className="bg-black p-4 text-white border-2 border-gray-800 group-hover:border-gray-600 transition-colors overflow-x-auto whitespace-pre font-mono text-xs uppercase tracking-widest">
                     {example.command}
                 </div>
                 <button
                     onClick={handleCopy}
-                    className="absolute top-2 right-2 p-1.5 rounded-md bg-gray-800/80 hover:bg-gray-700 text-gray-400 hover:text-white transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100"
-                    title="Copy command"
+                    className="absolute top-2 right-2 px-2 py-1 bg-white text-black text-[10px] font-bold uppercase tracking-widest hover:bg-gray-300 transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100 border-2 border-transparent"
+                    title="COPY_COMMAND"
                 >
-                    {copied ? <Check size={16} className="text-emerald-500" /> : <Copy size={16} />}
+                    {copied ? "[ COPIED ]" : "[ COPY ]"}
                 </button>
             </div>
         </div>

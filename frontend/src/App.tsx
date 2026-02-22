@@ -37,9 +37,9 @@ function App() {
     };
 
     return (
-        <div className="flex h-screen bg-[#05080f] text-gray-100 font-sans selection:bg-blue-500/30 selection:text-blue-100 overflow-hidden">
+        <div className="flex h-screen bg-black text-gray-300 font-mono selection:bg-gray-800 selection:text-white overflow-hidden">
             <Sidebar activeItem={getActiveLabel()} onItemClick={handleNavClick} />
-            <main className="flex-1 flex flex-col h-full overflow-y-auto bg-gradient-to-br from-[#05080f] via-[#0a0f18] to-[#0d1322]">
+            <main className="flex-1 flex flex-col h-full overflow-y-auto bg-[#0a0a0a]">
                 <Routes>
                     <Route path="/" element={<Navigate to="/workspaces" replace />} />
                     <Route path="/workspaces" element={<WorkspacesView onOpenWorkspace={(id) => navigate(`/workspaces/${id}`)} />} />
@@ -48,12 +48,12 @@ function App() {
                     <Route path="/tools/:toolName" element={<ToolDocPage />} />
                     <Route path="*" element={
                         <div className="flex-1 flex flex-col items-center justify-center text-center p-8">
-                            <div className="w-24 h-24 mb-6 rounded-full bg-gray-900/50 border border-gray-800 flex items-center justify-center">
-                                <span className="text-4xl text-gray-600">🏗️</span>
+                            <div className="w-24 h-24 mb-6 rounded-none bg-black border border-gray-800 flex items-center justify-center">
+                                <span className="text-4xl text-gray-500">?</span>
                             </div>
-                            <h2 className="text-2xl font-bold text-gray-200 mb-2">{getActiveLabel()}</h2>
-                            <p className="text-gray-500 max-w-sm">
-                                This section is currently under development. Check back later for updates.
+                            <h2 className="text-2xl font-bold text-gray-200 mb-2 uppercase tracking-widest">{getActiveLabel()}</h2>
+                            <p className="text-gray-600 max-w-sm uppercase text-xs tracking-wider">
+                                Section offline. Awaiting deployment.
                             </p>
                         </div>
                     } />

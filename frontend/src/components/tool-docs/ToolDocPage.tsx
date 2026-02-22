@@ -43,11 +43,10 @@ export default function ToolDocPage() {
 
     if (loading) {
         return (
-            <div className="flex items-center justify-center p-12">
-                <div className="animate-pulse flex space-x-2">
-                    <div className="h-3 w-3 bg-blue-500 rounded-full"></div>
-                    <div className="h-3 w-3 bg-blue-500 rounded-full animation-delay-200"></div>
-                    <div className="h-3 w-3 bg-blue-500 rounded-full animation-delay-400"></div>
+            <div className="flex items-center justify-center p-12 font-mono uppercase tracking-widest text-white">
+                <div className="flex items-center gap-3">
+                    <div className="w-2 h-2 bg-white animate-ping"></div>
+                    FETCHING_DOCS...
                 </div>
             </div>
         );
@@ -55,14 +54,14 @@ export default function ToolDocPage() {
 
     if (!health && !docs) {
         return (
-            <div className="p-8 max-w-4xl mx-auto w-full text-center">
-                <div className="bg-red-950/20 p-8 rounded-xl border border-red-900/50 inline-block mb-6">
-                    <p className="text-red-400 font-medium">Tool Not Found</p>
-                    <p className="text-red-500/70 text-sm mt-2">{error || `Could not find any data for "${toolName}"`}</p>
+            <div className="p-8 max-w-4xl mx-auto w-full text-center font-mono uppercase tracking-widest">
+                <div className="bg-black p-8 border-2 border-white inline-block mb-6">
+                    <p className="text-white font-bold">TOOL_NOT_FOUND</p>
+                    <p className="text-gray-500 text-xs mt-4">{error || `NO_DATA_AVAILABLE_FOR "${toolName}"`}</p>
                 </div>
                 <div>
-                    <button onClick={() => navigate('/tools')} className="text-blue-400 hover:text-blue-300 font-medium flex items-center justify-center gap-2 mx-auto transition-colors">
-                        <ArrowLeft size={16} /> Back to Tools Registry
+                    <button onClick={() => navigate('/tools')} className="text-white hover:text-gray-400 font-bold transition-colors">
+                        [RETURN_TO_REGISTRY]
                     </button>
                 </div>
             </div>
@@ -70,30 +69,28 @@ export default function ToolDocPage() {
     }
 
     return (
-        <div className="p-8 max-w-5xl mx-auto w-full relative">
+        <div className="p-8 max-w-5xl mx-auto w-full relative font-mono">
             <button
                 onClick={() => navigate('/tools')}
-                className="mb-8 text-gray-400 hover:text-gray-200 transition-colors flex items-center gap-2 text-sm font-medium"
+                className="mb-8 text-gray-500 hover:text-white transition-colors flex items-center gap-2 text-xs font-bold uppercase tracking-widest"
             >
-                <ArrowLeft size={16} /> Back to Tools
+                [&lt;- RETURN]
             </button>
 
-            <div className="bg-gray-900/50 backdrop-blur-xl rounded-2xl border border-gray-800/60 p-8 shadow-2xl">
+            <div className="bg-black border-2 border-gray-800 p-8">
                 <ToolDocHeader toolHealth={health} />
 
                 <div className="mt-8 space-y-12">
                     <section>
-                        <h2 className="text-2xl font-bold text-gray-100 mb-6 flex items-center gap-2">
-                            <span>Documentation</span>
-                            <div className="h-px bg-gray-800/80 flex-1 ml-4 block" />
+                        <h2 className="text-xl font-bold text-white mb-6 uppercase tracking-[0.2em] border-b border-gray-800 pb-2">
+                            [ DOCUMENTATION ]
                         </h2>
                         <ToolDocContent markdown={docs?.documentation || ""} />
                     </section>
 
                     <section>
-                        <h2 className="text-2xl font-bold text-gray-100 mb-6 flex items-center gap-2">
-                            <span>Usage Examples</span>
-                            <div className="h-px bg-gray-800/80 flex-1 ml-4 block" />
+                        <h2 className="text-xl font-bold text-white mb-6 uppercase tracking-[0.2em] border-b border-gray-800 pb-2">
+                            [ EXAMPLES ]
                         </h2>
                         <ToolExamplesGrid examples={docs?.examples || []} />
                     </section>

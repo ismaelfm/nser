@@ -8,20 +8,20 @@ interface ToolDocContentProps {
 export default function ToolDocContent({ markdown }: ToolDocContentProps) {
     if (!markdown) {
         return (
-            <div className="text-gray-500 italic p-8 text-center border border-dashed border-gray-700 rounded-xl">
-                No documentation available for this tool.
+            <div className="text-gray-500 font-mono uppercase tracking-widest text-xs p-8 text-center border-2 border-dashed border-gray-800">
+                [ NO_DOCUMENTATION_AVAILABLE ]
             </div>
         );
     }
 
     return (
-        <div className="prose prose-invert prose-blue max-w-none mt-6
-            prose-headings:text-gray-200 prose-headings:font-semibold
-            prose-a:text-blue-400 prose-a:no-underline hover:prose-a:text-blue-300
-            prose-code:text-emerald-300 prose-code:bg-gray-800/50 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded
-            prose-pre:bg-gray-900 prose-pre:border prose-pre:border-gray-800/80 prose-pre:text-gray-300
-            prose-blockquote:border-blue-500/50 prose-blockquote:bg-blue-500/5 prose-blockquote:py-1 prose-blockquote:px-4 prose-blockquote:rounded-r-lg
-            prose-th:text-gray-300 prose-td:text-gray-400 prose-tr:border-gray-800/60"
+        <div className="prose prose-invert prose-gray max-w-none mt-6 font-mono
+            prose-headings:text-white prose-headings:font-bold prose-headings:uppercase prose-headings:tracking-widest
+            prose-a:text-gray-300 prose-a:underline hover:prose-a:text-white
+            prose-code:text-white prose-code:bg-gray-900 prose-code:px-1.5 prose-code:py-0.5 prose-code:border prose-code:border-gray-800
+            prose-pre:bg-black prose-pre:border-2 prose-pre:border-gray-800 prose-pre:text-gray-300 prose-pre:rounded-none
+            prose-blockquote:border-l-4 prose-blockquote:border-white prose-blockquote:bg-gray-900/50 prose-blockquote:py-2 prose-blockquote:px-4 prose-blockquote:text-gray-400
+            prose-th:text-white prose-th:uppercase prose-th:tracking-widest prose-td:text-gray-400 prose-tr:border-gray-800"
         >
             <ReactMarkdown remarkPlugins={[remarkGfm]}>
                 {markdown}
