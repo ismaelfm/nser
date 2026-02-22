@@ -141,7 +141,7 @@ nser/
 │
 ├── internal/               # Private Go packages (see internal/README.md)
 │   ├── db/                 # SQLite database
-│   ├── recon/              # Recon tool interface
+│   ├── tool/               # Tool execution engine (see internal/tool/README.md)
 │   └── ai/                 # AI client placeholder
 │
 ├── frontend/               # React app (see frontend/README.md)

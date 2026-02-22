@@ -10,10 +10,6 @@ export function DeleteRun(arg1) {
   return window['go']['main']['App']['DeleteRun'](arg1);
 }
 
-export function DeleteToolExample(arg1) {
-  return window['go']['main']['App']['DeleteToolExample'](arg1);
-}
-
 export function DeleteWorkspace(arg1) {
   return window['go']['main']['App']['DeleteWorkspace'](arg1);
 }
@@ -50,22 +46,6 @@ export function GetWorkspaces() {
   return window['go']['main']['App']['GetWorkspaces']();
 }
 
-export function RunTool(arg1, arg2, arg3, arg4) {
-  return window['go']['main']['App']['RunTool'](arg1, arg2, arg3, arg4);
-}
-
 export function RunToolStreaming(arg1, arg2, arg3, arg4) {
   return window['go']['main']['App']['RunToolStreaming'](arg1, arg2, arg3, arg4);
-}
-
-export function SaveToolDocs(arg1, arg2) {
-  return window['go']['main']['App']['SaveToolDocs'](arg1, arg2);
-}
-
-export function SaveToolExample(arg1, arg2, arg3, arg4, arg5, arg6) {
-  return window['go']['main']['App']['SaveToolExample'](arg1, arg2, arg3, arg4, arg5, arg6);
-}
-
-export function UpdateWorkspace(arg1, arg2, arg3, arg4) {
-  return window['go']['main']['App']['UpdateWorkspace'](arg1, arg2, arg3, arg4);
 }

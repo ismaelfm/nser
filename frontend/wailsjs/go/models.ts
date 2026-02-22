@@ -53,7 +53,6 @@ export namespace main {
 	    }
 	}
 	export class ToolDocumentation {
-	    toolName: string;
 	    documentation: string;
 	    examples: ToolExample[];
 	
@@ -63,7 +62,6 @@ export namespace main {
 	
 	    constructor(source: any = {}) {
 	        if ('string' === typeof source) source = JSON.parse(source);
-	        this.toolName = source["toolName"];
 	        this.documentation = source["documentation"];
 	        this.examples = this.convertValues(source["examples"], ToolExample);
 	    }
@@ -128,32 +126,6 @@ export namespace tool {
 	        this.elevated = source["elevated"];
 	        this.username = source["username"];
 	        this.os = source["os"];
-	    }
-	}
-	export class RunResult {
-	    runId: number;
-	    toolName: string;
-	    target: string;
-	    commandLine: string;
-	    status: string;
-	    output: string;
-	    duration: string;
-	    exitCode: number;
-	
-	    static createFrom(source: any = {}) {
-	        return new RunResult(source);
-	    }
-	
-	    constructor(source: any = {}) {
-	        if ('string' === typeof source) source = JSON.parse(source);
-	        this.runId = source["runId"];
-	        this.toolName = source["toolName"];
-	        this.target = source["target"];
-	        this.commandLine = source["commandLine"];
-	        this.status = source["status"];
-	        this.output = source["output"];
-	        this.duration = source["duration"];
-	        this.exitCode = source["exitCode"];
 	    }
 	}
 	export class StreamStartResult {

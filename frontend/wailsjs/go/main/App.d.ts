@@ -7,8 +7,6 @@ export function CreateWorkspace(arg1:string,arg2:string,arg3:string):Promise<mai
 
 export function DeleteRun(arg1:number):Promise<void>;
 
-export function DeleteToolExample(arg1:number):Promise<void>;
-
 export function DeleteWorkspace(arg1:number):Promise<void>;
 
 export function GetPrivilegeStatus():Promise<tool.PrivilegeInfo>;
@@ -27,12 +25,4 @@ export function GetWorkspaceHistory(arg1:number):Promise<Array<main.CommandRun>>
 
 export function GetWorkspaces():Promise<Array<main.Workspace>>;
 
-export function RunTool(arg1:number,arg2:string,arg3:string,arg4:Array<string>):Promise<tool.RunResult>;
-
 export function RunToolStreaming(arg1:number,arg2:string,arg3:string,arg4:Array<string>):Promise<tool.StreamStartResult>;
-
-export function SaveToolDocs(arg1:string,arg2:string):Promise<void>;
-
-export function SaveToolExample(arg1:number,arg2:string,arg3:string,arg4:string,arg5:string,arg6:number):Promise<void>;
-
-export function UpdateWorkspace(arg1:number,arg2:string,arg3:string,arg4:string):Promise<void>;
