@@ -42,20 +42,6 @@ func Open() (*sql.DB, error) {
 		return nil, fmt.Errorf("run schema migration: %w", err)
 	}
 
-	// Additive column migrations for existing databases.
-	// SQLite does not support IF NOT EXISTS on ALTER TABLE ADD COLUMN,
-	// so we ignore errors caused by duplicate column names.
-	migrations := []string{
-		"ALTER TABLE workspaces ADD COLUMN target TEXT DEFAULT ''",
-		"ALTER TABLE tool_runs ADD COLUMN args TEXT DEFAULT ''",
-		"ALTER TABLE tool_runs ADD COLUMN command_line TEXT DEFAULT ''",
-		"ALTER TABLE tool_runs ADD COLUMN exit_code INTEGER DEFAULT 0",
-	}
-	for _, m := range migrations {
-		// Ignore "duplicate column name" errors (SQLite error code 1).
-		db.Exec(m) //nolint:errcheck — intentionally ignored
-	}
-
 	// Seed tool documentation and examples on first run (INSERT OR IGNORE).
 	seedToolDocs(db)
 
